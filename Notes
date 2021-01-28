@@ -1,0 +1,104 @@
+1. JS is synchronous single-threaded language.
+
+2. Execution context: 
+          1. Memory: (key, functions, variable etc) | Also known as variable envvironment
+          2. Code: ( code is executed | line wise | one line at a time ) | Also known as thread of execution
+
+3. When we eun JS code , execution context is created.
+
+4. var values are stored as undefined. | i first phse | In second phase initial value is stored.
+
+5. whole function code is copied in execution context. | when executing code of function it will create another execution context in code.
+
+6. "return" will return the value of function. | code will execute | value of undefined is replaced in memory | after execution of function execution context which is created in code will be deleted.
+
+7.when js code is created call stack is invoked. | all code will pe pushed inside call stack from bottom to top | first code at bottom, then second one is on top of that ....... | Like stacks in C++
+
+8. if there are 2 functions first one will be pushed to stack then it gets executed | then it will be executed and poped out from the stack | then 2nd function will be pushed in stack and then executed and poped out and so on....... 
+
+9. Call stack maint order of execution of execution context.
+
+10. Call stack is also known as:
+            1. Execution context stack 
+            2. Program stack 
+            3. Control stack 
+            4. Runtime stack 
+            5. Machine stack
+
+
+11. Hoisting:
+            1. undefined is not equal to not defined.
+            2. Hoisting is method in which we can call functions before declaration.
+            
+
+12. Every bowser has its own js engine.
+            chrome: v8
+js engine will create objects in case of browser its known as window.
+js engine will always create global object.
+this == window (at global level).
+whenever we create global execution context "this" will be created. and at global level this will ponts to window.
+
+
+13.Global space:
+
+var x = 10 {this is in global space}
+function a() {
+  var x = 100  (this is not in global space)
+}
+
+in simple words, anything which is not inside function is a global space.
+
+only global variables and functions wiill be logged into the window.
+
+window.a == this.a == a (In global space)
+
+
+14. undefined is like placeholder for variables.
+          1. if memory is allocated the it will be undefined
+          2. and if variable is not declared in space whether global or function then it will be not defined.
+          3. undefined is not empty it is placeholder.
+
+
+15. JS is loosely or weakly typed not string typed.
+we can put anything in variable in js not like other languages.
+
+
+16. Scope is directly dependents on lexical environment.
+
+17. Lexical memory is local memory plus reference to lexical environment of parents.
+
+18. let and const declarations are hoisted. (temporal dead zone)
+let variable initialized/declared and then logged to console | time between this is known as temporal dead zone
+
+
+19. When we try to access variable in temporal dead zone it will give us reference error.
+
+20. JS will not run a single line of code if it sees any redeclaration of let.
+
+21. const is same as let but it is more strict.
+
+
+22. Errors:
+            1. TypeError: redeclaration of const variable.
+            2. ReferenceError: when we try to access variable before initialization. | or variable which is not initialized.
+            3. SyntaxError: redeclaration of let.
+
+
+23. Block scope:
+            1. block is also known as compound statement (we can combine multiple js statements in block)
+            2. block is represented by {}
+            3. we can use js block so that we can use that block later where js requires only one statement.
+            4. If we have same named variable outside the blcok then it is known as shadowing.
+
+
+24. Shadowing:
+            1. Allowed: 
+                        outside: var, inside: var
+                        outside: let, inside block scope: let
+                        outside: var, inside block scope: let
+                        outside: const, inside block scope: const
+                        outside: var, inside block scope: const
+            
+            2. Not allowed:
+                        outside: let, inside: var 
+                        outside: const, inside: var 
