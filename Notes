@@ -4,9 +4,9 @@
           1. Memory: (key, functions, variable etc) | Also known as variable envvironment
           2. Code: ( code is executed | line wise | one line at a time ) | Also known as thread of execution
 
-3. When we eun JS code , execution context is created.
+3. When we run JS code , execution context is created.
 
-4. var values are stored as undefined. | i first phse | In second phase initial value is stored.
+4. var values are stored as undefined. | in first phase | In second phase initial value is stored.
 
 5. whole function code is copied in execution context. | when executing code of function it will create another execution context in code.
 
@@ -16,7 +16,7 @@
 
 8. if there are 2 functions first one will be pushed to stack then it gets executed | then it will be executed and poped out from the stack | then 2nd function will be pushed in stack and then executed and poped out and so on....... 
 
-9. Call stack maint order of execution of execution context.
+9. Call stack means order of execution of execution context.
 
 10. Call stack is also known as:
             1. Execution context stack 
@@ -102,3 +102,131 @@ let variable initialized/declared and then logged to console | time between this
             2. Not allowed:
                         outside: let, inside: var 
                         outside: const, inside: var 
+
+
+25.  Closure:
+            1. function bind together with lexical environment.
+            2. function with its lexical scope. (function inside function).
+            3. function along witth its lexical scope bundle is a closure.
+
+
+26. We can pass function inside function.  x(function a(){})
+27. we can assign function to variable. var a = function a({})
+28. we can also return function rather than calling it:  
+            x() instead of this we can do: return x;
+
+
+29. Uses of closure:
+            1. Module design pattern.
+            2. Currying.
+            3. Fuctions like once.
+            4. memoize.
+            5. maintaining state in async world.
+            6. setTimeouts
+            7. Iterators.
+            8. helps in data hiding and encapsulation.
+
+
+30. JS waits for none.
+
+31. setTimeout takes the function, attaches timer to it and store it somewhere.
+
+
+32. disadvantages of closure:
+            1. over consumption of memory
+            2. if not handled properly it may lead to memory leaks.
+            3. Garbage collector: it freezes unused (variables) memory in browser.
+
+
+33. Anonymous function: a function without name
+
+
+34. Synchronous single-threaded: means js can do only one thig at a time.
+due to callback functions we can use async functions.
+
+
+35. remove event listeners:
+ event listeners are heavy | takes lots of memory | uses closures | will be there in memory until event happens and after event happend | eg if click button is there event loistener will be active untill someone click that button and after that also | this will put a heavy load load on memory | hence we need remove event listeners.
+
+ if we add remove event listeners all the event memory will be garbage collected.
+
+
+
+ 36. First class functions: 
+            1. ability of functions to be used as values and to be ppassed as arguments is known as first class functions.
+            2. we can pass functions inside functions as an arguments.
+
+
+37. When function is invoked, execution context of function is created and pushed into the call stack.
+
+
+38. Call stack will execute things very quickly | it does not have timer.
+
+
+39. Browser >> JS engine >> Call stack >> execution context
+
+40. Browser has: 
+            1. Local Storage
+            2. JS engine
+            3. timer
+            4. URL
+            5. Can make connection to server
+            6. Bluetooth
+            7. Geolocation
+
+
+41. Web apis:
+            1. setTimeout
+            2. DOM apis
+            3. fetch()
+            4. local storage
+            5. console
+            6. Location
+            7. Many more
+These are not part of javascript | these are part of browser. | browser gives access to js engine to use these features.
+
+42. window is global object | we can use above features of browser in js through a keyword known as window
+window.setTimeout
+window.localStorage
+
+43. we dont use window.setTimeout coz setTimeout is available globally and we can access it as it is.
+
+44. when timer expires callback function is pushed in callback queue | and event loop check if there anything in callback queue and push it into the execution context. | and call stack executes call back function.
+
+45. microtask queue has priority than callback queue | microtask queue will execute before callback queue.
+
+46. first all the code is executed | then event loop will check if execution context is empty or not, if it is empty them it will check for microtask queue and callback queue | if there are tasks waiting in microtask queue and callback queue | microtask queue will be executed first as it has high priority and then callback queue is executed.
+
+47. Callback queue | task queue:
+            1. DOM
+            2. setTimeout etc
+
+48. Microtask queue:
+            1. fetch()
+            2. promises
+            3. mutation observer
+            4. etc
+
+49. Event loop , callback queues and microtask queues are part of the browser and not JS engine.
+
+50. All the callback functions
+ which come throgh promises will go in microtask queue.
+
+51. Mutation observer:
+            keeps on checking if there is mutation in DOM tree | if there is mutation if will execute callback functions.
+
+
+52. Starvation of tasks inside callback queue:
+            if there is task inside microtask queue which will return another callback in microtask queue which returns another callback and so on | then there is a possibility that the tasks in callback queue will never get a chance to execute | this phenomenon is known as starvation of tasks in callback queue.
+
+
+53. working of web api's in short:
+
+    - creation of global execution context => all the code is executed first (like console) => js engine checks whether there is any callback functions (web api's) => if there are callback queue tasks they will be moved in web api's environment => after some time interval (in case of setTimeout) they will go inside callback queue => event loop will wait until global execution context becomes empty => once GEC becomes empty it will check for tasks in callback queue and move them in GEC => then all tasks are executed.
+
+    - same for microtask queue
+
+    - but if we have microtask queue and callback queue | microtask queue will be executed first
+      microtask queue > callback queue 
+
+            
