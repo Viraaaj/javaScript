@@ -1,0 +1,18 @@
+console.log("start");
+
+setTimeout( function a() {
+  console.log("Callback")
+}, 5000 );
+
+console.log("End");
+
+=> Here js engine will run the code first and time is set for 5 sec, hence output is:
+    start => end => Callback(after timer expires)
+
+=> But what if we have million of llines of code which will take 10sec to run and we have timer of 5 sec | what will happen?
+:: cause evet loop will send the timer only when call stack is empty, till then setTimeout is there in callback queue.
+:: so what happens here is: js enngine will first runs million lines of code which take 10s and then call stack becomes empty then event loop will send set_timeout into the callstack after 10sec and then setTimeout is executed.
+:: eventhough we set time for 5sec, set_timeout will only be executed after call stack becomes empty. (till then it will wait there in callback queue)
+:: set_timeout => timer starts in environment => timer expires => set_timeout will be pushed in callback queue => event loop will check if the call stack is empty => then event loop will push set_timeout to call stack => executed.
+
+:: this is also known as concurrency model in JS.
