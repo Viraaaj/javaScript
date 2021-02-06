@@ -229,4 +229,35 @@ window.localStorage
     - but if we have microtask queue and callback queue | microtask queue will be executed first
       microtask queue > callback queue 
 
-            
+
+54. JavaScript runtime environment:
+            1. It is like a container which has all the things which are required to run js code.
+            2. JS engine
+            3. Set of API's : to connect to outside environment
+            4. callback queue
+            5. microtask queue
+
+JS runtime environment is not possible without JS engine.
+
+
+55. Node.js is used to run js code outside the browser.
+
+
+56. Browser's js enginer:
+            1. Microsoft edge: Chakra 
+            2. Firefox: Spider monkey
+            3. Chrome + deno + node.js: V8
+
+
+57. We can create our own js engine by following ECMAScript standards.   
+
+58. First JS enginer developed by JS creator. which is spiderMonkey.
+
+59. JS engine is not a machine. | it is program which is written in some programming language | Google's v8 is build using C++.
+
+60. JS is interpreted as well as compiled language | it behaves accordingly.
+
+61. When first js engine is created it has a interpreter | But nowadays js engine has both interpreter and compiler.
+
+62. JIT(Just In Time) compiled language:
+  Js engine uses interpreter along with compiler which makes it JIT compiled language.

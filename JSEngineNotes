@@ -1,0 +1,74 @@
+How JS engine works:
+
+it follows some steps: 
+
+1. Code
+2. Parsing
+3. Compilation
+4. Execution
+
+
+Parsing:
+      1. Code is broken down into tokens.
+      2. Syntax parser: It takes code and convert it intpo AST(Abstract syntax tree).
+
+      3. AST: JSON format which contains declaration | it generates trwee like sytructure.
+              astexplorer.net : this website will generate and show AST for given JS code. 
+
+      
+Compilation:
+      1. Interpreter | Compiler
+
+      2. Interpreter: 
+            => It will take code and start executing line by line | it does not know what happens with next line of code.
+
+      3. Compiler:
+            => code is compiled before executing
+            => code is compiled and new code is formed which is optimized version of code and then it is executed. | Which runs very fast.
+
+      4. Interpreter is very fast it immediately start executing code.
+
+      5. Interpreter is more fast and Compiler is more efficient.
+
+  
+Js engine uses interpreter along with compiler which makes it JIT compiled language.
+
+AOT: Ahead of Time compilation
+      compiler takes piece of code which is going to executed later and tries to optimize it.
+      It also created byte code which goes to execution phase.
+
+Memory heap: all memory is stored.
+Mark and sweep algorithm: memory heap will wipe all the garbage collected data.
+
+JS runtime => JS engine => call stack
+
+compiner does:
+      inlining
+      copy elision
+      inline caching
+
+fastest js engine: google's V8 engine
+
+About google's V8 engine:
+      interpreter named ignition.
+      turbo fan optimizing compiler.
+      they both made your code run very fast.
+
+
+v8 working:
+      :: JS code => parser => abstract syntax tree (AST) => interpreter (ignition) => bytecode => executed
+      :: (here along with ignition the compilter (turbo fan) also works) 
+      :: compiler (turbo fan) => optimized machine code => bytecode => executed
+      :: garbbage collector: oilpay
+
+
+JS runtime environment (contains everything) => Js engine + apis + callback queue + event loop
+
+JS engine => 3 phases => 
+            1. Parsing => tokens generated => syntax parser parse whole code and converts into AST => AST passed to interpreter.
+            2. Interpreter => converts bytecode => executed
+            compiler works on optimizing code
+            garbage collector => collects garbage and optimize memory space.
+            inline, inline caching.
+
+JS in JIT compilated language
