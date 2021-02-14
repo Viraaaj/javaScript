@@ -1,0 +1,67 @@
+async and differ in JS:
+
+- boolean attributes which ccan be used with script tag to load 
+external scripts efficiently into our web page.
+
+
+
+1. Normal attributes: 
+
+- browser first parse the html (line by line) then if there is any 
+script tag in between then it will stop (HTML parsing stops) there, 
+parse the script from network and gets into browser and runs it.
+
+- after parsing the script from network it will again start to parse
+HTML which is paused because of script tag.
+
+- in short:
+HTML parsing >> script parsing (if any) (HTML parsing paused here) >> script parsing done >> HTML parsing resumed >> parsing Done.
+but this not good, cause here browser will stop rendering HTML when it
+gets scrip tag, which will cause some issues.
+
+
+
+ 
+
+2. async attributes:
+
+- while HTML parsing is going on scripts are fetched from network 
+asynchronously 
+- then HTML parsing stops and scripts are executed.
+then again HTML parsing continues.
+
+- in short:
+HTML parsing + in paralled script fetching (only fetching not executing) >> scripts fetched successfully >> HTML parsing stops >> scripts executed >> HTML parsing resumed >> parsing Done.
+
+
+
+
+
+3. differ attributes:
+
+- HTML parsing will continue from start to end, will not stop in between,
+- while HTML parsing is going on paralelly script fetching is done,
+after HTML parsing is done, the fetched scripts are executed.
+
+- in short:
+HTML parsing (start to end without breaking) + paralelly script fetching >> HTML parsing Done >> script execution start >> scripts executed successfully >> parsing Done.
+
+
+
+
+
+Additional Notes:
+
+- async attributes does not guarentee the order of execution of scripts 
+but differ does.
+
+- if we have 10000 of scripts in our code then async will not 
+guarentees the order of execution of scripts and that may
+lead to breaking of our code, hence in such cases it is useful
+to use differ attributes.
+
+- differ attributes maintains the order of execution of scripts.
+
+- if you do not care about the order of execution of scripts like,
+when you have external scripts like google analytics etc, then
+you can use aync attributes.
