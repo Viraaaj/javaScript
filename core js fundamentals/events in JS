@@ -1,0 +1,50 @@
+bubbling, capturing, trickling in js:
+
+
+<div id="grandParent"> // suppose it has onclickGrandParent() method
+    <div id="parent">  //onclickParent()
+        <div id="child">  //onclickChild()
+
+        </div>
+    </div>
+</div>
+
+
+event Bubbling:
+  1. onclickChild() method will be called first
+  2. then onclickGrandParent() method will be called
+  3. then onclickGrandParent() method will be called
+
+bubbles always come out 
+from in to out
+
+
+
+event capturing
+it is opposite of bubbling
+    1. onclickGrandParent() method will be called
+    2. then onclickParent() method will be called
+    3. and then onclickChild() method will be called
+
+event capturing is also known as event trickling
+
+
+
+
+we can use any event whether it is bubbling of capturing
+
+
+
+in addEventListener method first parameter is always event and second is callback function
+and third is useCapture which is boolean
+addEventListener("click", () => {
+
+}, useCapture)
+
+here if useCapture is true then event will be capturing and if
+we dont pass anything or false then event will be bubbling.
+
+
+by default first event will tricked on and then bubble out
+but if we want to control this then we can use useCapture to
+specify any event
